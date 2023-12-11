@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="mt-5" style="width: 60%; margin: auto;">
+        <!-- <ul class="list-group list-group-flush"> -->
+            {% for user in users %}
+                <div class="mb-3" style="display: flex; justify-content: space-between;">
+                    <span class="list-group-item">{{user.username}}</span>
+                    <div>
+                        {% if user.is_active %}
+                            <a href="/active/{{user.id}}"><span class="badge bg-success rounded-pill">active</span></a>
+                        {% else %}
+                            <a href="/active/{{user.id}}"><span class="badge bg-danger rounded-pill">inactive</span></a>
+                        {% endif %}
+                            <a href="/delete_user/{{user.id}}"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock content %}
